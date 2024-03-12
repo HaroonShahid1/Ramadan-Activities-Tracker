@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramadan Month Track Record</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h2>Record your Ramadan activities</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="id_date">Date:</label>
+        <input type="date" name="date" id="id_date" required>
+
+        <label for="id_day">Day:</label>
+        <input type="text" name="day" id="id_day" required>
+
+        <label for="id_quran_recitation">Quran Recitation:</label>
+        <textarea name="quran_recitation" id="id_quran_recitation" required></textarea>
+
+        <label>Prayers:</label>
+        <label for="id_fajr"><input type="checkbox" name="fajr" id="id_fajr"> Fajr</label>
+        <label for="id_dhuhr"><input type="checkbox" name="dhuhr" id="id_dhuhr"> Dhuhr</label>
+        <label for="id_asr"><input type="checkbox" name="asr" id="id_asr"> Asr</label>
+        <label for="id_maghrib"><input type="checkbox" name="maghrib" id="id_maghrib"> Maghrib</label>
+        <label for="id_isha"><input type="checkbox" name="isha" id="id_isha"> Isha</label>
+
+        <label for="id_tahajjud"><input type="checkbox" name="tahajjud" id="id_tahajjud"> Optional Tahajjud</label>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if records %}
+        <h2>Record List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Day</th>
+                    <th>Quran Recitation</th>
+                    <th>Fajr</th>
+                    <th>Dhuhr</th>
+                    <th>Asr</th>
+                    <th>Maghrib</th>
+                    <th>Isha</th>
+                    <th>Tahajjud</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in records %}
+                    <tr>
+                        <td>{{ record.date }}</td>
+                        <td>{{ record.day }}</td>
+                        <td>{{ record.quran_recitation }}</td>
+                        <td>{{ record.fajr }}</td>
+                        <td>{{ record.dhuhr }}</td>
+                        <td>{{ record.asr }}</td>
+                        <td>{{ record.maghrib }}</td>
+                        <td>{{ record.isha }}</td>
+                        <td>{{ record.tahajjud }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</body>
+</html>
