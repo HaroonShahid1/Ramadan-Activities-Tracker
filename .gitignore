@@ -1,0 +1,38 @@
+# .gitignore
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+env/
+
+# Django-related
+*.sqlite3
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+db.sqlite3
+/static/
+/media/
+
+# IDE-specific
+.vscode/
+.idea/
+
+# Compiled files
+*.mo
+*.pyc
+
+# Environment configuration
+.env
+
+# Ignore local settings
+settings_local.py
+
+# Ignore migrations
+**/migrations/
